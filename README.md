@@ -4,7 +4,7 @@ This code looks into a way to implement CI/CD in Cloud Composer using Cloud Buil
 
 The blog for this code is published on [Medium](https://medium.com/@amarachi.ogu/implementing-ci-cd-in-cloud-composer-using-cloud-build-and-github-part-2-a721e4ed53da) 
 
-More details on google documetation [Google Docs] (https://cloud.google.com/composer/docs/composer-2/dag-cicd-github)
+More details on [Google Docs](https://cloud.google.com/composer/docs/composer-2/dag-cicd-github)
 
 
 Workflow Architecture Diagram   
