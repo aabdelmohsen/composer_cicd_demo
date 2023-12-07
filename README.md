@@ -7,6 +7,8 @@ The blog for this code is published on [Medium](https://medium.com/@amarachi.ogu
 Workflow Architecture Diagram   
 ![Workflow Architecture Diagram](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*hIIbqvmZqgrcgDcp3jv4Iw.png)
 
+Google documetation https://cloud.google.com/composer/docs/composer-2/dag-cicd-github
+
 ## File Layout
 
 ```
