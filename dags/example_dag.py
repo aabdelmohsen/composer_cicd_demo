@@ -15,6 +15,7 @@ import datetime
 
 from airflow import models
 from airflow.operators import bash
+from airflow.providers.google.cloud.transfers.gcs_to_bigquery import GCSToBigQueryOperator
 
 # If you are running Airflow in more than one time zone
 # see https://airflow.apache.org/docs/apache-airflow/stable/timezone.html
