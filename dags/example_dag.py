@@ -21,6 +21,10 @@ from airflow.operators import bash
 # for best practices
 YESTERDAY = datetime.datetime.now() - datetime.timedelta(days=1)
 
+PROJECT_ID="terraform-363717"
+STAGING_DATASET = "practice_ds"
+LOCATION = "us-central1"
+
 default_args = {
     "owner": "Composer Example",
     "depends_on_past": False,
@@ -42,3 +46,23 @@ with models.DAG(
     print_dag_run_conf = bash.BashOperator(
         task_id="print_dag_run_conf", bash_command="echo {{ dag_run.id }}"
     )
+
+    load_to_bq = GCSToBigQueryOperator(
+        task_id = 'load_to_bq',
+        bucket = 'df_test_data',
+        source_objects = ['df_test_data.csv'],
+        destination_project_dataset_table = f'{PROJECT_ID}:{STAGING_DATASET}.df_test_data',
+        write_disposition='WRITE_TRUNCATE',
+        source_format = 'csv',
+        allow_quoted_newlines = 'true',
+        skip_leading_rows = 1,
+        schema_fields=[
+        {'name': 'SSN', 'type': 'STRING', 'mode': 'NULLABLE'},
+        {'name': 'Fname', 'type': 'STRING', 'mode': 'NULLABLE'},
+        {'name': 'Lname', 'type': 'STRING', 'mode': 'NULLABLE'},
+        {'name': 'PLname', 'type': 'STRING', 'mode': 'NULLABLE'},
+            ],
+        )
+
+    
+    print_dag_run_conf >> load_to_bq
